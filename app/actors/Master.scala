@@ -21,7 +21,7 @@ class Master() extends Actor with ActorLogging {
             sender ! Akka.system.actorOf(
                 SmallestMailboxPool(1).props(
                     Props(classOf[actors.ActorB], crr.sourceActor)
-                ), name = "ActorB"
+                ), name = "ActorB" + java.util.UUID.randomUUID().toString
             )
         }
         case _ => println("[Master] Got an unexpected message")
